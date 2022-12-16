@@ -1,0 +1,83 @@
+{
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "Vess",
+    "version": "1.1.0"
+  },
+  "tauri": {
+    "pattern": {
+      "use": "isolation",
+      "options": {
+        "dir": "../dist-isolation"
+      }
+    },
+    "allowlist": {
+      "path": {
+        "all": true
+      },
+      "shell": {
+        "all": false,
+        "sidecar": true,
+        "scope": [{ "name": "bin/xray", "sidecar": true }]
+      },
+      "dialog": {
+        "open": true,
+        "save": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "category": "DeveloperTool",
+      "copyright": "",
+      "deb": {
+        "depends": []
+      },
+      "externalBin": ["bin/xray"],
+      "resources": ["etc"],
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "identifier": "work.aliz.Vess",
+      "longDescription": "",
+      "macOS": {
+        "entitlements": null,
+        "exceptionDomain": "",
+        "frameworks": [],
+        "providerShortName": null,
+        "signingIdentity": null
+      },
+      "shortDescription": "",
+      "targets": "all",
+      "windows": {
+        "certificateThumbprint": null,
+        "digestAlgorithm": "sha256",
+        "timestampUrl": ""
+      }
+    },
+    "security": {
+      "csp": null
+    },
+    "updater": {
+      "active": false
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "height": 600,
+        "resizable": true,
+        "title": "Vess",
+        "width": 800
+      }
+    ]
+  }
+}

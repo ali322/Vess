@@ -1,0 +1,99 @@
+<template>
+  <div class="px-4">
+    <div class="flex items-center py-2 text-left">
+      <label class="mr-6 text-gray-500 w-20 text-sm">Host</label>
+      <input
+        type="text"
+        spellcheck="false"
+        :disabled="running"
+        v-model="host"
+        class="leading-7 rounded border border-gray-300 text-sm px-2 w-64 disabled:text-gray-500"
+      />
+    </div>
+    <div class="flex items-center py-2 text-left">
+      <label class="mr-6 text-gray-500 w-20 text-sm">Port</label>
+      <input
+        type="text"
+        spellcheck="false"
+        :disabled="running"
+        v-model="port"
+        class="leading-7 rounded border border-gray-300 text-sm px-2 w-64 disabled:text-gray-500"
+      />
+    </div>
+    <div class="flex items-center py-2 text-left">
+      <label class="mr-6 text-gray-500 w-20 text-sm">ID</label>
+      <input
+        type="text"
+        spellcheck="false"
+        :disabled="running"
+        v-model="server.settings.vnext[0].users[0].id"
+        class="leading-7 rounded border border-gray-300 text-sm px-2 w-64 disabled:text-gray-500"
+      />
+    </div>
+    <div class="flex items-center py-2 text-left">
+      <label class="mr-6 text-gray-500 w-20 text-sm">Flow</label>
+      <Select class="rounded pr-8 w-64" v-model:value="flow" :disabled="running">
+        <Option value="none">none</Option>
+        <Option value="xtls-rprx-direct">xtls-rprx-direct</Option>
+        <Option value="xtls-rprx-vision">xtls-rprx-vison</Option>
+        <Option value="xtls-rprx-direct-udp443">xtls-rprx-direct-udp443</Option>
+      </Select>
+    </div>
+  </div>
+</template>
+<script lang="ts" setup>
+import { computed, toRefs } from 'vue'
+import Select from '@/components/Select.vue'
+import Option from '@/components/Option.vue'
+
+
+interface Prop{
+  server: Record<string, any>,
+  running: boolean
+}
+
+const props = defineProps<Prop>()
+const { server, running } = toRefs(props)
+
+const emit = defineEmits<{
+  (e:'update'):void
+}>()
+
+const host = computed({
+  get() {
+    return server.value.settings.vnext[0].address
+  },
+  set(val: string) {
+    server.value.settings.vnext[0].address = val
+    emit('update')
+  }
+})
+const port = computed({
+  get() {
+    return server.value.settings.vnext[0].port
+  },
+  set(val: string) {
+    server.value.settings.vnext[0].port = parseInt(val)
+    emit('update')
+  }
+})
+
+const id = computed({
+  get() {
+    return server.value.settings.vnext[0].users[0].id
+  },
+  set(val) {
+    server.value.settings.vnext[0].users[0].id = val
+    emit('update')
+  }
+})
+const flow = computed({
+  get() {
+    return server.value.settings.vnext[0].users[0].flow
+  },
+  set(val: string) {
+    server.value.settings.vnext[0].users[0].flow = (val === 'none' ? '' : val)
+    emit('update')
+  }
+})
+</script>
