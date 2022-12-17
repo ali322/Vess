@@ -9,7 +9,7 @@
           <Option value="IPOnDemand">IPOnDemand</Option>
         </Select>
       </div>
-      <button class="btn-success" @click="startCreate">
+      <button class="btn-secondary" @click="startCreate">
         <PlusOutlined class="w-4 h-4" />
       </button>
     </div>
@@ -48,7 +48,7 @@
               class="py-1 rounded border border-gray-300 text-sm px-2 w-52 disabled:text-gray-500" />
           </div>
           <div class="pt-4 flex justify-center items-center">
-            <button class="btn-success" @click="save">
+            <button class="btn-primary" @click="save">
               <span class="mx-1 leading-7 text-sm">Save</span>
             </button>
             <button class="btn-danger ml-4" @click="del">

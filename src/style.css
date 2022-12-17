@@ -12,7 +12,7 @@
   @apply btn border-red-500 bg-red-500 !text-white
 }
 .btn-secondary{
-  @apply btn border-gray-100 bg-gray-100 !text-current
+  @apply btn border-gray-200 bg-gray-200 !text-current
 }
 .btn-success{
   @apply btn border-green-500 bg-green-500 !text-white

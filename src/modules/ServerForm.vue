@@ -8,7 +8,7 @@
       </div>
       <div v-if="running" class="pr-4 text-xs text-gray-500 flex items-center"> <ArrowUpwardOutlined class="w-3 h-4"></ArrowUpwardOutlined> {{ uplink }}</div>
       <div v-if="running" class="pr-4 text-xs text-gray-500 flex items-center"> <ArrowDownwardOutlined class="w-3 h-4"></ArrowDownwardOutlined>{{ downlink }}</div>
-      <button class="w-16 h-[30px] flex items-center" :class="running ? 'btn-danger' : 'btn-success'" @click="run">
+      <button class="w-16 h-[30px] flex items-center" :class="running ? 'btn-danger' : 'btn-primary'" @click="run">
         <StopRound class="w-5 h-5" v-if="running"></StopRound>
         <PlayArrowRound class="w-5 h-5" v-else></PlayArrowRound>
         <span class="mx-1 leading-7">{{ running ? 'stop' : 'run' }}</span>

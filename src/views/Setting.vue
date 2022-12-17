@@ -1,24 +1,24 @@
 <template>
-  <div class="h-full w-full p-6">
-    <div class="flex items-center pb-4">
+  <div class="h-full w-full px-6 py-4">
+    <div class="flex items-center h-10 pb-4">
       <label class="text-gray-500 text-sm">Socks Port</label>
       <div class="flex-1 flex justify-end items-center">
         <input type="text" v-model="socksPort" class="py-1 rounded border border-gray-300 text-xs px-2 w-16" />
       </div>
     </div>
-    <div class="flex items-center pb-4">
+    <div class="flex items-center h-10 pb-4">
       <label class="text-gray-500 text-sm">Http Port</label>
       <div class="flex-1 flex justify-end items-center">
         <input type="text" v-model="httpPort" class="py-1 rounded border border-gray-300 text-xs px-2 w-16" />
       </div>
     </div>
-    <div class="flex items-center pb-4">
+    <div class="flex items-center h-10 pb-4">
       <label class="text-gray-500 text-sm">API Port</label>
       <div class="flex-1 flex justify-end items-center">
         <input type="text" v-model="apiPort" class="py-1 rounded border border-gray-300 text-xs px-2 w-16" />
       </div>
     </div>
-    <div class="flex items-center pb-4">
+    <div class="flex items-center h-10 pb-4">
       <label class="text-gray-500 text-sm">Extra Config</label>
       <div class="flex-1 flex justify-end items-center">
         <div class="ml-2 flex justify-center items-center" @click="changeExtra">
@@ -26,7 +26,7 @@
         </div>
       </div>
     </div>
-    <div class="flex items-center pb-4">
+    <div class="flex items-center h-10 pb-4">
       <label class="text-gray-500 text-sm">Export Config</label>
       <div class="flex-1 flex justify-end items-center">
         <div class="ml-4" @click="exportConfig">
@@ -34,7 +34,7 @@
         </div>
       </div>
     </div>
-    <div class="flex items-center pb-4">
+    <div class="flex items-center h-10 pb-4">
       <label class="text-gray-500 text-sm">Import Servers</label>
       <div class="flex-1 flex justify-end items-center">
         <div class="ml-4" @click="importServers">
@@ -42,7 +42,7 @@
         </div>
       </div>
     </div>
-    <div class="flex items-center pb-4">
+    <div class="flex items-center h-10 pb-4">
       <label class="text-gray-500 text-sm">Export Servers</label>
       <div class="flex-1 flex justify-end items-center">
         <div class="ml-4" @click="exportServers">
@@ -50,7 +50,7 @@
         </div>
       </div>
     </div>
-    <div class="flex items-center pb-4">
+    <div class="flex items-center h-10 pb-4">
       <label class="text-gray-500 text-sm">Reset Settings</label>
       <div class="flex-1 flex justify-end items-center">
         <div class="ml-4" @click="restore">
@@ -58,7 +58,7 @@
         </div>
       </div>
     </div>
-    <div class="flex items-center pb-4">
+    <div class="flex items-center h-10 pb-4">
       <label class="text-gray-500 text-sm">Clear Cache</label>
       <div class="flex-1 flex justify-end items-center">
         <div class="ml-4" @click="clearCache">
