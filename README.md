@@ -1,6 +1,6 @@
 # Vess
 
-desktop client (Mac / Windows / Linux) for [Xray](https://github.com/xtls/xray-core)
+desktop client (Mac / Windows / Linux) of [Xray](https://github.com/xtls/xray-core)
 
 ## Download
 
