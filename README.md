@@ -2,6 +2,9 @@
 
 desktop client (Mac / Windows / Linux) of [Xray](https://github.com/xtls/xray-core)
 
+[![GitHub commit activity](https://img.shields.io/github/commit-activity/m/ali322/vess)](https://github.com/ali322/vess/commits/master)
+[![GitHub Releases](https://img.shields.io/github/downloads/ali322/vess/latest/total?logo=github)](https://github.com/ali322/vess/releases)
+
 ## Download
 
 Download from [Releases](https://github.com/ali322/vess/releases)
@@ -45,3 +48,7 @@ support, commercial software like proxifier is recommended.
 
 The developer currently does not have enough time to add more features to Vess, nor to merge PRs. However, forking and releasing your own version are always welcome.
 
+
+## License
+
+[MIT License](http://en.wikipedia.org/wiki/MIT_License)
