@@ -31,13 +31,14 @@
       />
     </div>
     <div class="flex items-center py-2 text-left">
-      <label class="mr-6 text-gray-500 w-20 text-sm">Flow</label>
-      <Select class="rounded w-56" v-model:value="flow" :disabled="running">
-        <Option value="none">none</Option>
-        <Option value="xtls-rprx-direct">xtls-rprx-direct</Option>
-        <Option value="xtls-rprx-vision">xtls-rprx-vison</Option>
-        <Option value="xtls-rprx-direct-udp443">xtls-rprx-direct-udp443</Option>
-      </Select>
+      <label class="mr-6 text-gray-500 w-20 text-sm">AlterId</label>
+      <input
+        type="text"
+        spellcheck="false"
+        :disabled="running"
+        v-model="alterId"
+        class="leading-7 rounded border border-gray-300 text-sm px-2 w-20 disabled:text-gray-500"
+      />
     </div>
   </div>
 </template>
@@ -73,26 +74,17 @@ const port = computed({
     return server.value.settings.vnext[0].port
   },
   set(val: string) {
-    server.value.settings.vnext[0].port = parseInt(val)
+    server.value.settings.vnext[0].port = (val === '' ? 0 : parseInt(val))
     emit('update')
   }
 })
 
-const id = computed({
+const alterId = computed({
   get() {
-    return server.value.settings.vnext[0].users[0].id
-  },
-  set(val) {
-    server.value.settings.vnext[0].users[0].id = val
-    emit('update')
-  }
-})
-const flow = computed({
-  get() {
-    return server.value.settings.vnext[0].users[0].flow
+    return server.value.settings.vnext[0].users[0].alterId
   },
   set(val: string) {
-    server.value.settings.vnext[0].users[0].flow = (val === 'none' ? '' : val)
+    server.value.settings.vnext[0].users[0].alterId = (val === '' ? 0 : parseInt(val))
     emit('update')
   }
 })

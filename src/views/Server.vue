@@ -62,8 +62,8 @@ export default defineComponent({
     event.listen('run-xray', (evt: { payload: string }) => {
       serverStore.writeOutput(evt.payload)
     })
-    const downlink = ref('')
-    const uplink = ref('')
+    const downlink = ref('0')
+    const uplink = ref('0')
     event.listen('stats-xray', (evt: { payload: string }) => {
       const ret = JSON.parse(evt.payload)
       for (let row of ret.stat) {

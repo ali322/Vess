@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="flex items-center leading-6 py-1 rounded border border-gray-300" ref="selectBtn">
-      <span class="flex-1 w-16 px-2 text-sm" :class="{'text-gray-300': props.disabled}">{{ current }}</span>
+      <span class="flex-1 px-2 text-sm" :class="{'text-gray-300': props.disabled}">{{ current }}</span>
       <div class="cursor-pointer flex items-center" @click.stop="!props.disabled && (focus = !focus)">
         <ArrowDropUpFilled class="w-5 h-5" v-if="focus"></ArrowDropUpFilled>
         <ArrowDropDownFilled class="w-5 h-5" v-else></ArrowDropDownFilled>
@@ -9,7 +9,7 @@
     </div>
     <teleport to="body">
       <div
-        class="fixed bg-white shadow-md rounded pb-2 border border-gray-200 z-100"
+        class="fixed bg-white shadow-md rounded pb-2 border border-gray-200 z-[100]"
         v-show="focus"
         :style="dropdownStyle"
         ref="selectDropdown"

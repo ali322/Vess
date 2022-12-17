@@ -7,7 +7,7 @@
         spellcheck="false"
         :disabled="running"
         v-model="path"
-        class="leading-7 rounded border border-gray-300 text-sm px-2 w-64 disabled:text-gray-500"
+        class="leading-7 rounded border border-gray-300 text-sm px-2 w-56 disabled:text-gray-500"
       />
     </div>
   </div>

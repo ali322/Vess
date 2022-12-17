@@ -22,30 +22,30 @@
     <Modal :actived="modalActivated" @close="modalActivated = false">
       <div class="py-4">
         <div class="px-4">
-          <div class="flex items-center py-2 text-left">
-            <label class="text-gray-500 w-20 text-sm">Name</label>
+          <div class="flex justify-start items-center py-2">
+            <label class="text-gray-500 w-16 block text-sm text-left">Name</label>
             <input type="text" v-model="current.name" spellcheck="false"
-              class="py-1 rounded border border-gray-300 text-sm px-2 w-64 disabled:text-gray-500" />
+              class="py-1 rounded border border-gray-300 text-sm px-2 w-24 disabled:text-gray-500" />
           </div>
           <div class="flex items-center py-2 text-left">
-            <label class="text-gray-500 w-20 text-sm">Tag</label>
-            <Select class="rounded pr-8 w-60" v-model:value="current.outboundTag">
+            <label class="text-gray-500 w-16 block text-left text-sm">Tag</label>
+            <Select class="rounded pr-8 w-32" v-model:value="current.outboundTag">
               <Option value="direct">direct</Option>
               <Option value="proxy">proxy</Option>
               <Option value="block">block</Option>
             </Select>
           </div>
           <div class="flex items-center py-2 text-left">
-            <label class="text-gray-500 w-20 text-sm">Type</label>
-            <Select class="rounded pr-8 w-60" v-model:value="current.type">
+            <label class="text-gray-500 w-16 text-sm">Type</label>
+            <Select class="rounded pr-8 w-32" v-model:value="current.type">
               <Option value="domain">domain</Option>
               <Option value="ip">ip</Option>
             </Select>
           </div>
           <div class="flex items-center py-2 text-left">
-            <label class="text-gray-500 w-20 text-sm">Value</label>
+            <label class="text-gray-500 w-16 block text-left text-sm">Value</label>
             <input type="text" v-model="current.value" spellcheck="false"
-              class="py-1 rounded border border-gray-300 text-sm px-2 w-64 disabled:text-gray-500" />
+              class="py-1 rounded border border-gray-300 text-sm px-2 w-52 disabled:text-gray-500" />
           </div>
           <div class="pt-4 flex justify-center items-center">
             <button class="btn-success" @click="save">

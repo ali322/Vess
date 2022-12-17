@@ -25,6 +25,7 @@ let next = ref(() => { })
 const show = (msg: string, cb: () => void) => {
   actived.value = true
   message.value = msg
+  hasErr.value = false
   next.value = cb
   setTimeout(() => {
     actived.value = false

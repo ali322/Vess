@@ -4,11 +4,11 @@
       <div class="flex-1 text-left flex">
         <label class="mr-6 text-gray-500 w-20">Tag</label>
         <input type="text" spellcheck="false" :disabled="running" v-model="tag"
-          class="leading-6 rounded border border-gray-300 text-sm px-2 w-20 disabled:text-gray-500" />
+          class="leading-7 rounded border border-gray-300 text-sm px-2 w-20 disabled:text-gray-500" />
       </div>
-      <div v-if="running" class="pr-4 text-xs text-gray-500 flex items-center"> <ArrowUpwardOutlined class="w-4 h-4"></ArrowUpwardOutlined> {{ uplink }}</div>
-      <div v-if="running" class="pr-4 text-xs text-gray-500 flex items-center"> <ArrowDownwardOutlined class="w-4 h-4"></ArrowDownwardOutlined>{{ downlink }}</div>
-      <button class="flex items-center" :class="running ? 'btn-danger' : 'btn-success'" @click="run">
+      <div v-if="running" class="pr-4 text-xs text-gray-500 flex items-center"> <ArrowUpwardOutlined class="w-3 h-4"></ArrowUpwardOutlined> {{ uplink }}</div>
+      <div v-if="running" class="pr-4 text-xs text-gray-500 flex items-center"> <ArrowDownwardOutlined class="w-3 h-4"></ArrowDownwardOutlined>{{ downlink }}</div>
+      <button class="w-16 h-[30px] flex items-center" :class="running ? 'btn-danger' : 'btn-success'" @click="run">
         <StopRound class="w-5 h-5" v-if="running"></StopRound>
         <PlayArrowRound class="w-5 h-5" v-else></PlayArrowRound>
         <span class="mx-1 leading-7">{{ running ? 'stop' : 'run' }}</span>
@@ -17,9 +17,10 @@
     <div class="px-4">
       <div class="flex items-center py-2 text-left">
         <label class="mr-6 text-gray-500 w-20 text-sm">Protocol</label>
-        <Select class="rounded pr-8" v-model:value="protocol" :disabled="running">
+        <Select class="rounded w-20" v-model:value="protocol" :disabled="running">
           <Option value="vless">vless</Option>
           <Option value="trojan">trojan</Option>
+          <Option value="vmess">vmess</Option>
         </Select>
       </div>
     </div>
@@ -40,13 +41,14 @@ import Confirm from '@/components/Confirm.vue'
 import Toast from '@/components/Toast.vue'
 import Vless from './Vless.vue'
 import Trojan from './Trojan.vue'
+import Vmess from './Vmess.vue'
 import StreamSetting from './StreamSetting.vue'
 import { outboundByProtocol } from '@/conf'
 
 export default defineComponent({
   components: {
     PlayArrowRound, StopRound, SaveOutlined, ArrowUpwardOutlined, ArrowDownwardOutlined,
-    Select, Option, Toast, Confirm, Trojan, Vless, StreamSetting
+    Select, Option, Toast, Confirm, Trojan, Vmess, Vless, StreamSetting
   },
   props: {
     server: {

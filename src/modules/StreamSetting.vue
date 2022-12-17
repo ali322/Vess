@@ -2,7 +2,7 @@
   <div class="px-4">
     <div class="flex items-center py-2 text-left">
       <label class="mr-6 text-gray-500 w-20 text-sm">Security</label>
-      <Select class="rounded pr-8" v-model:value="security" :disabled="running">
+      <Select class="rounded w-20" v-model:value="security" :disabled="running">
         <Option value="none">none</Option>
         <Option value="tls">tls</Option>
         <Option value="xtls">xtls</Option>
@@ -15,13 +15,27 @@
         spellcheck="false"
         :disabled="running"
         v-model="serverName"
-        class="leading-7 rounded border border-gray-300 text-sm px-2 w-64 disabled:text-gray-500"
+        class="leading-7 rounded border border-gray-300 text-sm px-2 w-56 disabled:text-gray-500"
       />
+    </div>
+    <div class="flex items-center py-2 text-left">
+      <label class="mr-6 text-gray-500 w-20 text-sm">Fingerprint</label>
+      <Select
+        class="rounded w-56"
+        v-model:value="fingerprint"
+        :disabled="running"
+      >
+        <Option value="none">none</Option>
+        <Option value="chrome">chrome</Option>
+        <Option value="firefox">firefox</Option>
+        <Option value="safari">safari</Option>
+        <Option value="randomized">randomized</Option>
+      </Select>
     </div>
     <div class="flex items-center py-2 text-left">
       <label class="mr-6 text-gray-500 w-20 text-sm">Network</label>
       <Select
-        class="rounded pr-8"
+        class="rounded w-20"
         v-model:value="server.streamSettings.network"
         :disabled="running"
       >
@@ -77,6 +91,24 @@ const serverName = computed({
       server.value.streamSettings.tlsSettings.serverName = val
     } else if (server.value.streamSettings.security === 'xtls') {
       server.value.streamSettings.xtlsSettings.serverName = val
+    }
+    emit('update')
+  }
+})
+
+const fingerprint = computed({
+  get() {
+    if (server.value.streamSettings.security === 'tls') {
+      return server.value.streamSettings.tlsSettings.fingerprint
+    } else if (server.value.streamSettings.security === 'xtls') {
+      return server.value.streamSettings.xtlsSettings.fingerprint
+    }
+  },
+  set(val: string) {
+    if (server.value.streamSettings.security === 'tls') {
+      server.value.streamSettings.tlsSettings.fingerprint = (val === 'none' ? '' : val)
+    } else if (server.value.streamSettings.security === 'xtls') {
+      server.value.streamSettings.xtlsSettings.fingerprint = (val === 'none' ? '' : val)
     }
     emit('update')
   }

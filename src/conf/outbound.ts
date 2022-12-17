@@ -15,6 +15,23 @@ export const vless = {
   ]
 }
 
+export const vmess = {
+  vnext: [
+    {
+      address: 'www.example.com',
+      port: 443,
+      users: [
+        {
+          encryption: 'none',
+          id: 'abcd',
+          level: 0,
+          alterId: 0
+        }
+      ]
+    }
+  ]
+}
+
 export const trojan = {
   servers: [
     {

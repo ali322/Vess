@@ -32,7 +32,7 @@
     </div>
     <div class="flex items-center py-2 text-left">
       <label class="mr-6 text-gray-500 w-20 text-sm">Flow</label>
-      <Select class="rounded pr-8 w-60" v-model:value="flow" :disabled="running">
+      <Select class="rounded pr-8 w-56" v-model:value="flow" :disabled="running">
         <Option value="none">none</Option>
         <Option value="xtls-rprx-direct">xtls-rprx-direct</Option>
         <Option value="xtls-rprx-vision">xtls-rprx-vison</Option>
@@ -43,6 +43,8 @@
 </template>
 <script lang="ts" setup>
 import { computed, toRefs } from 'vue'
+import Select from '@/components/Select.vue'
+import Option from '@/components/Option.vue'
 
 const emit = defineEmits<{
   (e:'update'):void
