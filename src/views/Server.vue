@@ -68,10 +68,10 @@ export default defineComponent({
       const ret = JSON.parse(evt.payload)
       for (let row of ret.stat) {
         if (row.name === 'outbound>>>proxy>>>traffic>>>downlink') {
-          downlink.value = `${normalizeByte(row.value)}/s`
+          downlink.value = `${normalizeByte(row.value)}`
         }
         if (row.name === 'outbound>>>proxy>>>traffic>>>uplink') {
-          uplink.value = `${normalizeByte(row.value)}/s`
+          uplink.value = `${normalizeByte(row.value)}`
         }
       }
     })
