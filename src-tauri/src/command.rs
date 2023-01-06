@@ -65,7 +65,7 @@ fn run_xray(window: tauri::Window, app_handle: tauri::AppHandle, config: String)
   print!("{:?}", res_dir);
   let dest_dir = res_dir.join("etc");
   if !dest_dir.is_dir() {
-    fs::create_dir_all(&dest_dir).expect("Failed to create ect dir");
+    fs::create_dir_all(&dest_dir).expect("Failed to create etc dir");
   }
   fs::write(dest_dir.join("config.json"), config).expect("Failed to write config.json");
   let mut envs: HashMap<String, String> = HashMap::new();
