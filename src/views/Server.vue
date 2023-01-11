@@ -90,9 +90,10 @@ export default defineComponent({
       running.value = true
     }
     const stopOne = () => {
-      event.emit('stop-xray')
       serverStore.purgeOutput()
       running.value = false
+      tauri.invoke('stop_xray')
+      // event.emit('stop-xray')
     }
     let timer: any
     const runOne = () => {

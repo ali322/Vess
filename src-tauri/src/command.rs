@@ -1,8 +1,8 @@
 use pinger::{ping, PingResult};
-use std::{collections::HashMap, fs, path::Path};
+use std::{collections::HashMap, fs, path::Path, sync::Arc};
 use tauri::{
   api::{
-    process::{Command, CommandEvent},
+    process::{Command, CommandEvent, self},
   },
   Builder, Wry,
 };
@@ -77,14 +77,14 @@ fn run_xray(window: tauri::Window, app_handle: tauri::AppHandle, config: String)
     "XRAY_LOCATION_CONFIG".to_string(),
     dest_dir.to_str().unwrap().to_string(),
   );
-  tauri::async_runtime::spawn(async move {
-    let (mut rx, _child) = Command::new_sidecar("xray")
-      .expect("Failed to setup `xray` sidecar")
-      .args(vec!["run"])
-      .envs(envs)
-      .current_dir(res_dir)
-      .spawn()
-      .expect("Failed to spawn xray run");
+  let (mut rx, _child) = Command::new_sidecar("xray")
+    .expect("Failed to setup `xray` sidecar")
+    .args(vec!["run"])
+    .envs(envs)
+    .current_dir(res_dir)
+    .spawn()
+    .expect("Failed to spawn xray run");
+  tauri::async_runtime::spawn(async move{
     while let Some(event) = rx.recv().await {
       if let CommandEvent::Stdout(line) = event {
         window
@@ -93,6 +93,11 @@ fn run_xray(window: tauri::Window, app_handle: tauri::AppHandle, config: String)
       }
     }
   });
+}
+
+#[tauri::command]
+fn stop_xray() {
+  process::kill_children();
 }
 
 #[tauri::command]
@@ -118,6 +123,6 @@ fn copy_file(from: String, to: String) -> Result<u64, String> {
 
 pub fn apply_command(builder: Builder<Wry>) -> Builder<Wry> {
   builder.invoke_handler(tauri::generate_handler![
-    run_xray, stats_xray, latency, latencies, import_file, export_file, copy_file
+    run_xray, stats_xray, stop_xray, latency, latencies, import_file, export_file, copy_file
   ])
 }
