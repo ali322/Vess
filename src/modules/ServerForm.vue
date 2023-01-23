@@ -1,5 +1,5 @@
 <template>
-  <div class="py-2 flex-1">
+  <div class="py-2 flex-1 flex flex-col">
     <div class="flex px-4 pb-2 pt-2 justify-end items-center">
       <div class="flex-1 text-left flex">
         <label class="mr-6 text-gray-500 w-20">Tag</label>
@@ -14,18 +14,20 @@
         <span class="mx-1 leading-7">{{ running ? 'stop' : 'run' }}</span>
       </button>
     </div>
-    <div class="px-4">
-      <div class="flex items-center py-2 text-left">
-        <label class="mr-6 text-gray-500 w-20 text-sm">Protocol</label>
-        <Select class="rounded w-20" v-model:value="protocol" :disabled="running">
-          <Option value="vless">vless</Option>
-          <Option value="trojan">trojan</Option>
-          <Option value="vmess">vmess</Option>
-        </Select>
+    <div class="flex-1 overflow-y-scroll">
+      <div class="px-4">
+        <div class="flex items-center py-2 text-left">
+          <label class="mr-6 text-gray-500 w-20 text-sm">Protocol</label>
+          <Select class="rounded w-20" v-model:value="protocol" :disabled="running">
+            <Option value="vless">vless</Option>
+            <Option value="trojan">trojan</Option>
+            <Option value="vmess">vmess</Option>
+          </Select>
+        </div>
       </div>
+      <component :is="protocolForm" v-bind="{ server, running }" v-on:update="onServerUpdate" />
+      <StreamSetting :server="server" :running="running" @update="onServerUpdate" />
     </div>
-    <component :is="protocolForm" v-bind="{ server, running }" v-on:update="onServerUpdate" />
-    <StreamSetting :server="server" :running="running" @update="onServerUpdate" />
     <Toast ref="toastRef" />
   </div>
 </template>

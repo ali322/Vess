@@ -1,6 +1,17 @@
 <template>
   <div class="px-0">
     <div class="flex items-center py-2 text-left">
+      <label class="mr-6 text-gray-500 w-20 text-sm">MultiMode</label>
+      <Select
+        class="rounded w-20"
+        v-model:value="multiMode"
+        :disabled="running"
+      >
+        <Option :value="true">开</Option>
+        <Option :value="false">关</Option>
+      </Select>
+    </div>
+    <div class="flex items-center py-2 text-left">
       <label class="mr-6 text-gray-500 w-20 text-sm">ServiceName</label>
       <input
         type="text"
@@ -14,6 +25,8 @@
   </template>
   <script lang="ts" setup>
   import { computed, toRefs, onBeforeMount } from 'vue'
+  import Select from '@/components/Select.vue'
+  import Option from '@/components/Option.vue'
   
   const emit = defineEmits<{
     (e:'update'):void
@@ -39,6 +52,14 @@
     },
     set(val: string) {
       server.value.streamSettings.grpcSettings.serviceName = val
+    }
+  })
+  const multiMode = computed({
+    get() {
+      return server.value.streamSettings.grpcSettings.multiMode || false
+    },
+    set(val: boolean) {
+      server.value.streamSettings.grpcSettings.multiMode = val
     }
   })
   </script>
