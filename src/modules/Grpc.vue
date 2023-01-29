@@ -21,6 +21,16 @@
         class="leading-7 rounded border border-gray-300 text-sm px-2 w-56 disabled:text-gray-500"
       />
     </div>
+    <div class="flex items-center py-2 text-left">
+      <label class="mr-6 text-gray-500 w-20 text-sm">IdleTimeout</label>
+      <input
+        type="text"
+        spellcheck="false"
+        :disabled="running"
+        v-model="idleTimeout"
+        class="leading-7 rounded border border-gray-300 text-sm px-2 w-56 disabled:text-gray-500"
+      />
+    </div>
   </div>
   </template>
   <script lang="ts" setup>
@@ -60,6 +70,14 @@
     },
     set(val: boolean) {
       server.value.streamSettings.grpcSettings.multiMode = val
+    }
+  })
+  const idleTimeout = computed({
+    get() {
+      return server.value.streamSettings.grpcSettings.idle_timeout || 10
+    },
+    set(val: string) {
+      server.value.streamSettings.grpcSettings.idle_timeout = parseInt(val)
     }
   })
   </script>
