@@ -50,10 +50,19 @@ export default {
   settings: vless,
   streamSettings: {
     network: 'tcp',
-    security: 'xtls',
-    xtlsSettings: {
-      allowInsecure: true,
-      serverName: ''
+    security: 'tls',
+    tlsSettings: {
+      allowInsecure: false,
+      serverName: '',
+      fingerprint: ''
+    },
+    grpcSettings: {
+      serviceName: '',
+      multiMode: true,
+      idle_timeout: 13
+    },
+    wsSettings: {
+      path: ''
     }
   }
 }

@@ -11,6 +11,7 @@ import { ref, computed, watch, defineComponent, defineAsyncComponent, reactive }
 import { storeToRefs } from 'pinia'
 import { ArrowUpwardOutlined, ArrowDownwardOutlined, AddFilled, PlayArrowRound, StopRound, EditOutlined } from '@vicons/material'
 import { tauri, event } from '@tauri-apps/api'
+import clone from 'just-clone'
 import Modal from '@/components/Modal.vue'
 import Confirm from '@/components/Confirm.vue'
 import outbound from '@/conf/outbound'
@@ -44,7 +45,7 @@ export default defineComponent({
       selected.value = i
     }
     const addOne = () => {
-      serverStore.createServer(outbound)
+      serverStore.createServer(clone(outbound))
       selected.value = servers.value.length - 1
     }
     const changeOne = (server: Record<string, any>) => {

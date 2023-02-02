@@ -50,12 +50,6 @@
   const props = defineProps<Prop>()
   const { server, running } = toRefs(props)
   
-  onBeforeMount(() => {
-    if (!server.value.streamSettings.grpcSettings) {
-      server.value.streamSettings.grpcSettings = {serviceName: ''}
-    }
-  })
-  
   const serviceName = computed({
     get() {
       return server.value.streamSettings.grpcSettings.serviceName

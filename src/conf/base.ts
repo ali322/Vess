@@ -64,18 +64,22 @@ export const base = {
   dns: {
     servers: [
       {
-        address: '8.8.8.8',
+        address: 'https+local://1.1.1.1/dns-query',
         domains: ['geosite:geolocation-!cn']
       },
       {
-        address: '223.5.5.5',
+        address: 'https://doh.pub/dns-query',
         domains: ['geosite:cn'],
         expectIPs: ['geoip:cn']
       },
       {
-        address: '114.114.114.114',
-        domains: ['geosite:cn']
+        address: '119.29.29.29',
+        domains: ['geosite:cn'],
+        expectIPs: ['geoip:cn']
       },
+      '223.5.5.5',
+      '114.114.114.114',
+      '8.8.8.8',
       'localhost'
     ]
   },

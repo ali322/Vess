@@ -27,12 +27,6 @@ interface Prop{
 const props = defineProps<Prop>()
 const { server, running } = toRefs(props)
 
-onBeforeMount(() => {
-  if (!server.value.streamSettings.wsSettings) {
-    server.value.streamSettings.wsSettings = {path: ''}
-  }
-})
-
 const path = computed({
   get() {
     return server.value.streamSettings.wsSettings.path
